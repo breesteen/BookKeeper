@@ -12,20 +12,22 @@ public class Book {
     private long bookId;
     private long authorId;
     private String title;
-    private int totalPages;
+    private int length;
     private LocalDate dateStarted;
-    private LocalDate dateFinished;
-    //
-    // !!! ISBN ATTRIBUTE? !!!
+    private LocalDate dateEnded;
+
+    public Book() {
+
+    };
 
     //CONSTRUCTOR
-    public Book (int bookId, long authorId, String title, int totalPages, LocalDate dateStarted, LocalDate dateFinished){
+    public Book (int bookId, long authorId, String title, int length, LocalDate dateStarted, LocalDate dateEnded){
         this.bookId = bookId;
         this.authorId = authorId;
         this.title = title;
-        this.totalPages = totalPages;
+        this.length = length;
         this.dateStarted = dateStarted;
-        this.dateFinished = dateFinished;
+        this.dateEnded = dateEnded;
     }
 
     //GETTERS
@@ -36,11 +38,11 @@ public class Book {
 
     public String getTitle() {return this.title;}
 
-    public int getTotalPages() {return this.totalPages;}
+    public int getLength() {return this.length;}
 
     public LocalDate getDateStarted() {return this.dateStarted;}
 
-    public LocalDate getDateFinished() {return this.dateFinished;}
+    public LocalDate getDateEnded() {return this.dateEnded;}
 
     //SETTERS
 
@@ -56,16 +58,16 @@ public class Book {
         this.title = title;
     }
 
-    public void setTotalPages(int totalPages) {
-        this.totalPages = totalPages;
+    public void setLength (int length) {
+        this.length= length;
     }
 
     public void setDateStarted(LocalDate dateStarted) {
         this.dateStarted = dateStarted;
     }
 
-    public void setDateFinished(LocalDate dateFinished) {
-        this.dateFinished = dateFinished;
+    public void setDateEnded(LocalDate dateFinished) {
+        this.dateEnded = dateFinished;
     }
 
 
@@ -77,9 +79,9 @@ public class Book {
                 "bookId=" + bookId +
                 ", authorId='" + authorId + '\'' +
                 ", title='" + title + '\'' +
-                ", totalPages=" + totalPages +
+                ", length=" + length +
                 ", dateStarted=" + dateStarted +
-                ", dateFinished=" + dateFinished +
+                ", dateFinished=" + dateEnded +
                 '}';
     }
 
@@ -88,11 +90,12 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return bookId == book.bookId && totalPages == book.totalPages && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(dateStarted, book.dateStarted) && Objects.equals(dateFinished, book.dateFinished);
+        return bookId == book.bookId && length == book.length && Objects.equals(authorId, book.authorId) && Objects.equals(title, book.title) && Objects.equals(dateStarted, book.dateStarted)
+                && Objects.equals(dateEnded, book.dateEnded);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookId, authorId, title, totalPages, dateStarted, dateFinished);
+        return Objects.hash(bookId, authorId, title, length, dateStarted, dateEnded);
     }
 }

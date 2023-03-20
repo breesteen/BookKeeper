@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Objects;
 
 public class User {
@@ -8,7 +10,9 @@ public class User {
 
     private long userId;
     private String username;
+    @JsonIgnore //no send back to client
     private String password;
+
     //CONSTRUCTOR
     public User(long userId, String username, String password) {
         this.userId = userId;
